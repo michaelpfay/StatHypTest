@@ -1,3 +1,4 @@
+# Chapter 2, example 2.5
 library(exact2x2)
 
 fisher.exact(matrix(c(7,262-7,30,494-30),2,2),or=1,tsmethod="central")
