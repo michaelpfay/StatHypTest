@@ -1,4 +1,4 @@
-# Applied Statistical Hypothesis Tests
+# Statistical Hypothesis Tests
 
 This repository is related to the book:
 
