@@ -1,27 +1,30 @@
-# Chapter 2, example 2.5
 library(exact2x2)
 
-fisher.exact(matrix(c(7,262-7,30,494-30),2,2),or=1,tsmethod="central")
-fisher.exact(matrix(c(7,262-7,30,494-30),2,2),or=1,tsmethod="minlike")
+x<- matrix(c(7,262-7,30,494-30),2,2)
+fisher.exact(x,or=1,tsmethod="central")
+fisher.exact(x,or=1,tsmethod="minlike")
 
 
 
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=0.177)
+
+fisher.test(x,or=.99)
+
+fisher.test(x,or=1)
+
+
+fisher.test(x,or=1.01)
 
 
 
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=0.178)
+exact2x2Plot(matrix(c(7,262-7,30,494-30),2,2),orRange=c(0.175,1.02),tsmethod="minlike")
+exact2x2Plot(matrix(c(7,262-7,30,494-30),2,2),orRange=c(0.17,0.190),tsmethod="minlike")
+lines(rep(0.1773,2),c(0,.05),col="red")
 
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=.99)
+exact2x2Plot(matrix(c(7,262-7,30,494-30),2,2),orRange=c(0.9,1.2),tsmethod="minlike")
 
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=1)
+exact2x2Plot(matrix(c(7,262-7,30,494-30),2,2),orRange=c(0.95,1.05),tsmethod="minlike")
+exact2x2Plot(matrix(c(7,262-7,30,494-30),2,2),orRange=c(0.95,1.05),tsmethod="minlike",ylim=c(0.0495,0.0505))
 
-
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=1.01)
-
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=1.01)
-fisher.test(matrix(c(7,262-7,30,494-30),2,2),or=1.013)
-
-
-binom.exact(2,12,tsmethod="minlike",plot=TRUE,xlim=c(.4,.6))
-exactbinomPlot(2,12,tsmethod="minlike",xlim=c(.4,.6),ylim=c(.02,.08))
+lines(rep(0.993,2),c(0,.05),col="blue")
+lines(rep(1.006,2),c(0,.05),col="brown")
+lines(rep(1.014,2),c(0,.05),col="green")
