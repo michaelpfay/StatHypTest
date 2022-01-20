@@ -1,2 +1,2 @@
-## This folder has R scripts that were used in the book
+## This folder has many (but not all) of the R scripts that were used in writing the book
 
