@@ -1,5 +1,5 @@
-## wmwTest new 
-
+## wmwTest functions
+## For details, see Fay and Malinovsky (Statistics in Medicine, 2018;37:3991-4006)
 
 
 
@@ -15,15 +15,23 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
   m<-length(x)
   n<-length(y)
   N<-m+n
+  # create zobs=vector of group membership
+  # ordered by the responses
+  # in Fay and Malinovsky (2018, Section 7) this vector
+  # is w, in this function it is zobs
   u<-c(x,y)
   zobs<-c(rep(0,m),rep(1,n))
   o<-order(u)
   u<-u[o]
   zobs<-zobs[o]
   
+  # Create Zmat, each row is a possible allocation of the groups
+  # in Fay and Mainovsky, the jth row is w_j one of the permutations 
   if (nMC==0){
+    # complete set of all permutations of groups
     Zmat<-chooseMatrix(N,n)
   } else {
+    # create Monte Carlo set of permutations of the groups
     Zmat<-matrix(NA,nMC+1,N)
     Zmat[1,]<-zobs
     for (i in 1:nMC){
@@ -55,7 +63,7 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
   
   sumlog<-function(x){ sum( log(x) ) }
   
-  
+  # Calculate pi^{PH}(phi), see equation 16 Fay and Malinovsky (2018)
   calcPiPH<-function(phi,m,n,Mmat,Nmat){
     lnumerator<- lfactorial(m)+lfactorial(n)+n*log(1-phi)+m*log(phi)
     denomMat<- phi*Mmat + (1-phi)*Nmat
@@ -63,7 +71,7 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
     pijPH<- exp(lnumerator - ldenom)
     pijPH
   }
-  
+  # Calculate pi^{LA}(phi), see equation 17 Fay and Malinovsky (2018)
   calcPiLA<-function(phi,m,n,Mstar,Nstar){
     lnumerator<- lfactorial(m)+lfactorial(n)+n*log(phi)+m*log(1-phi)
     denomMat<- (1-phi)*Mstar + phi*Nstar
@@ -72,10 +80,12 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
     pijPH
   }
   
-  
+  # equation 18 Fay and Malinovsky
   calcPiLAPH<- function(phi,m,n,Mmat,Nmat,Mstar,Nstar){
     0.5*calcPiLA(phi,m,n,Mstar,Nstar)+ 0.5*calcPiPH(phi,m,n,Mmat,Nmat)
   }
+  
+
   
   calcPval<-function(phi,m,n,Mmat,Nmat,Mstar,Nstar,
                      Phimid,Phimidobs, alternative,tsmethod, doMC=FALSE){
@@ -108,11 +118,31 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
     ci<-c(0,1)
     # changes with Version 0.9.4 change Phimidobs<1 to Phimidobs< PhiMax
     if ((alternative=="less" | (alternative=="two.sided" & tsmethod=="central")) & Phimidobs<PhiMax){
-      ci[2]<- uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, Alternative="less")$root
+       #ci[2]<- uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, Alternative="less")$root
+       # since for some Monte Carlo simulations the uniroot fails
+       # set up try function to give warning and give a NA for the estimate
+       ciRoot2<- try(uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, 
+                             Alternative="less")$root, silent = TRUE)
+       if (class(ciRoot2)=="try-error"){
+         ci[2]<-NA
+         warning("uniroot failed, upper confidence limit set to NA, try method='asymptotic' or if the sample size is small enough method='exact.ce'  ")
+       } else {
+         ci[2]<-ciRoot2
+       }
     } 
     # changes with Version 0.9.4 change Phimidobs>0 to Phimidobs> PhiMin
     if ((alternative=="greater" | (alternative=="two.sided" & tsmethod=="central")) & Phimidobs>PhiMin){
-      ci[1]<- uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, Alternative="greater")$root
+      # see above comments about Monte Carlo simulation uniroot failure
+      ciRoot1<- try(uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, 
+                        Alternative="greater")$root, silent=TRUE)
+      
+      if (class(ciRoot1)=="try-error"){
+         ci[1]<-NA
+         warning("uniroot failed, lower confidence limit set to NA, try method='asymptotic' or if the sample size is small enough method='exact.ce'  ")
+       } else {
+         ci[1]<-ciRoot1
+       }
+      
     } 
     if (alternative=="two.sided" & tsmethod=="abs"){
       ## for tsmethod='abs' the pvalue function GENERALLY (but not for sure)

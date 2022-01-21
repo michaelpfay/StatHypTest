@@ -76,7 +76,7 @@ for details see Fay and Malinovsky (2018).
 There is a choice of three methods. When \code{method='asymptotic'}, the test is implemented using a normal approximation, with (\code{correct=TRUE}) or without 
 (\code{correct=FALSE}) a continuity correction. The resulting p-values should 
 match \code{\link{wilcox.test}} (when 
-\code{paired=FALSE}  and \code{exact=FALSE}). When \code{method='exact.ce'}, the test is implemented using complete enumeration of all permutations, and hence is only tractible for very small sample sizes (less than 10 in each group). When \code{method='exact.mc'}, the test is implemented using Monte Carlo with B=10^4 replications (change B with \code{control=controlWMW(nMC=B)}). As B gets larger the p-value approaches the exact one.     
+\code{paired=FALSE}  and \code{exact=FALSE}). When \code{method='exact.ce'}, the test is implemented using complete enumeration of all permutations, and hence is only tractible for very small sample sizes (less than 10 in each group). When \code{method='exact.mc'}, the test is implemented using Monte Carlo with B=10^4 replications (change B with \code{control=controlWMW(nMC=B)}). As B gets larger the p-value approaches the exact one. (See 'note' section, sometimes the \code{method='exact.mc'} will not work.)    
 
 The  \code{tsmethod='central'} gives two-sided p-value that is equal to 
 \code{min(1,min(2*pless,2*pgreater))}. 
@@ -125,7 +125,12 @@ Hanley, JA, and McNeil, BJ (1982). The Meaning and Use of the Area under a Recei
 Newcombe, Robert G. (2006). Confidence intervals for an effect size measure based on the Mann-Whitney statistic. Part 2: asymptotic methods and evaluation. Statistics in medicine 25(4): 559-573.
 }
 %\author{%%  ~~who you are~~}
-%\note{%%  ~~further notes~~}
+\note{
+The \code{method='exact.mc'} can sometimes fail. The issue is that for some Monte Carlo simulations the one-sided p-value function is not monotonic, even in for data sets where the one-sided p-value would be monotonic if we could do complete enumeration. In this case, the confidence limit will be set to \code{NA} and a warning will suggest trying \code{method='asymptotic'}
+or \code{method='exact.ce'} if feasible. Here is an example where that occurs: 
+\code{set.seed(1);} \code{g<- c(rep(0,6),1,rep(0,4),1,rep(0,3),1,1,0,1,1,0,rep(1,5));}
+\code{y<-1:26;} \code{wmwTest(y~g,exact=TRUE)}.
+}
 
 \section{Warning }{
 The algorithm for calculating the confidence interval when \code{tsmethod='abs'} is not guaranteed to give the correct value. It is possible to skip over a value. For more accurate results 

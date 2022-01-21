@@ -9,7 +9,8 @@ Performs either a random effects meta analysis (Paule-Mandel method or Dersimoni
 }
 \usage{
 metaNorm(y, s2, method = c("PM", "DL", "fixed"), df = NULL, nullparm = 0,
-    conf.level = 0.95, alternative = c("two.sided", "less", "greater"),  niter = 100, epsilon = 1e-10)
+    conf.level = 0.95, alternative = c("two.sided", "less", "greater"),  
+    niter = 100, epsilon = 1e-10)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -78,9 +79,7 @@ Paule, RC and Mandel, J (1982). Consensus values and weighting factors. J Res Na
 \author{
 Michael P. Fay
 }
-\note{
-%%  ~~further notes~~
-}
+%\note{%%  ~~further notes~~}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

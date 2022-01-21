@@ -7,13 +7,35 @@
 %% NB: The date (yyyy-mm-dd) is the "Packaged:" date in ../DESCRIPTION
 
 
+%\section{Version 0.9.7 (???)}{
+% \subsection{Changes}{
+%  \itemize{
+%   \item TO DO: finish poisson2sampleDiff 
+%         (see /PUBLISHED/2015 Fay Proschan Brittain/R/poisson2sampleDiff)
+%         the meldCD function there is the same that is here.
+%  }
+% } 
+%}
 
-\section{Version 0.9.5 (2018-12-07)}{
+
+
+
+\section{Version 0.9.6 (2020-07-03)}{
+ \subsection{Changes}{
+  \itemize{
+   \item Added unconditional difference option for the statistic for the sign test. This calls ncnemarExactDP, that is why the package now requires exact2x2 (>=1.6.4).
+  }
+ } 
+}
+
+
+
+
+\section{Version 0.9.5.1 (2020-06-22)}{
  \subsection{Changes}{
   \itemize{
    \item added utol argument to meldCD.
-   \item TO DO: finish poisson2sampleDiff (see /PUBLISHED/2015 Fay Proschan Brittain/R/poisson2sampleDiff)
-         the meldCD function there is the same that is here.
+   \item Changed wmwTest so that it gives a warning if the uniroot function may fail for method='exact.mc'. See Note section on the man page. 
   }
  } 
 }

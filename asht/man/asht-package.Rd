@@ -12,14 +12,14 @@ Test and confidence intervals for some applied statistical hypothesis tests.
 \tabular{ll}{
 Package: \tab asht\cr
 Type: \tab Package\cr
-Version: \tab 0.9.5\cr
-Date: \tab 2018-12-07\cr
+Version: \tab 0.9.6\cr
+Date: \tab 2020-07-03\cr
 License: \tab GPL-3\cr
 }
 A collection of statistical hypothesis tests, with a focus on non-asymptotic tests. Some tests are \code{\link{medianTest}} for exact tests and
 confidence intervals about a median, \code{\link{quantileTest}} which generalizes \code{\link{medianTest}} for other quantiles besides the median,  \code{\link{signTest}} to run the exact sign test, \code{\link{bfTest}} to run the Behrens-Fisher test,
 \code{\link{abcnonHtest}} to calculate ABC intervals and tests,
-\code{\link{wmwTest}} to run the Wilcoxon-Mann-Whitney test (i.e., Wilcoxon rank sum test, or Mann-Whitney U test) and calculate confidence intervals on the Mann-Whitney parameter.
+\code{\link{wmwTest}} to run the Wilcoxon-Mann-Whitney test (i.e., Wilcoxon rank sum test, or Mann-Whitney U test) and calculate confidence intervals on the Mann-Whitney parameter. In rare cases, the function only gives a confidence interval and and estimate and does not test a specific hypothesis (see \code{\link{prevSeSp}} which estimates prevalence accounting for sensitivity and specificity).
 }
 \author{
 Michael P. Fay
