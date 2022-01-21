@@ -38,8 +38,7 @@ fisher.exact(matrix(c(x2,n2-x2,x1,n1-x1),2,2),tsmethod="minlike", conf.level=1-m
 
 binomMeld.test(x1,n1,x2,n2, parmtype="d")
 binomMeld.test(x1,n1,x2,n2, parmtype="r")
-# CI below, slightly different from book, maybe used different version
-# of the binomMeld.test function
+# typo in the book, it should have an upper limit of 382.95
 binomMeld.test(x1,n1,x2,n2, parmtype="o")
 
 plotHypergeometric<-function(x1,n1,x2,n2){
