@@ -4,12 +4,13 @@
 export(cvTest,quantileTest,signTest,var1Test,wspoissonTest,wsrTest,
        medianTest, bfTest, pbf, qbf, bfControl, abcnonHtest, 
        wmwTest, methodRuleWMW, wmwControl, latentTransform, Vpo, 
-       meldtTest, anovaOneWay, tukeyWelsch, meldCD, metaNorm, prevSeSp
+       meldtTest, anovaOneWay, tukeyWelsch, meldCD, metaNorm, prevSeSp,
+       simulateSS
        )
 
 import(exact2x2, exactci, bpcp, ssanv, coin)
 
-importFrom("stats", "approx", "runif")
+importFrom("stats", "approx", "runif","isoreg")
 importFrom(stats, sd,var, 
     pt, 
     pbinom, rbinom, 

@@ -12,8 +12,8 @@ Test and confidence intervals for some applied statistical hypothesis tests.
 \tabular{ll}{
 Package: \tab asht\cr
 Type: \tab Package\cr
-Version: \tab 0.9.6\cr
-Date: \tab 2020-07-03\cr
+Version: \tab 0.9.7\cr
+Date: \tab 2022-01-25\cr
 License: \tab GPL-3\cr
 }
 A collection of statistical hypothesis tests, with a focus on non-asymptotic tests. Some tests are \code{\link{medianTest}} for exact tests and
