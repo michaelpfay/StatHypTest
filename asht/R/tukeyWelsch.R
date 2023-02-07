@@ -164,7 +164,10 @@ tukeyWelsch<-function(y,g,method=c("aov","kw","sr","user"),pvalfunc=NULL,
   dname <- paste(deparse(substitute(y)), "and", deparse(substitute(g)))
   if (any(is.na(g)) | any(is.na(y))) stop("function is not defined for missing y or g values")
   # g needs to be a factor for the aov method to work right
-  if (class(g)!="factor"){
+  # Sept 16, 2022: change from 
+  #     ###  if (class(g)!="factor"){ ###   
+  #  to (as suggested by check --as-cran)...
+  if (!inherits(g,"factor")){
     warning("g treated as a factor")
     g<-factor(g)
   }

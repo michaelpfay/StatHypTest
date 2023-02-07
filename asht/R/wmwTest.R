@@ -123,7 +123,9 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
        # set up try function to give warning and give a NA for the estimate
        ciRoot2<- try(uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, 
                              Alternative="less")$root, silent = TRUE)
-       if (class(ciRoot2)=="try-error"){
+       # Sept 16, 2022: use 'inherits(x,"classname")' instead of 'class(x)=="classname")
+       # as recommended by check --as-cran
+       if (inherits(ciRoot2,"try-error")){
          ci[2]<-NA
          warning("uniroot failed, upper confidence limit set to NA, try method='asymptotic' or if the sample size is small enough method='exact.ce'  ")
        } else {
@@ -135,8 +137,9 @@ wmwTestExact<-function(x,y, alternative=c("two.sided","less","greater"),
       # see above comments about Monte Carlo simulation uniroot failure
       ciRoot1<- try(uniroot(rootfunc,c(eps,1-eps),tol=eps,Alpha=alpha, 
                         Alternative="greater")$root, silent=TRUE)
-      
-      if (class(ciRoot1)=="try-error"){
+      # Sept 16, 2022: use 'inherits(x,"classname")' instead of 'class(x)=="classname")
+      # as recommended by check --as-cran
+      if (inherits(ciRoot1,"try-error")){
          ci[1]<-NA
          warning("uniroot failed, lower confidence limit set to NA, try method='asymptotic' or if the sample size is small enough method='exact.ce'  ")
        } else {

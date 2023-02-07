@@ -51,7 +51,13 @@ simulateSS<-function(decFunc,dataGenFunc,nstart=100,numBatches=100,repsPerBatch=
     # the fitted values from the isoreg list by the ordered Nc values
     # so we have to reorder the Nc values=irout$x so that they match the y fitted
     X<- irout$yf
-    Y<- irout$x[irout$ord]
+    # correct error: Sept 15, 2022, irout$ord is NULL if already ordered
+    #Y<- irout$x[irout$ord]
+    if (irout$isOrd){
+      Y<-irout$x
+    } else {
+      Y <- irout$x[irout$ord]
+    } 
     # also since approx predicts y not x, we change the names
     imin<- max((1:length(X))[X< power])
     imax<- min((1:length(X))[X>power])

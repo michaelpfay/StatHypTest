@@ -5,6 +5,7 @@ export(cvTest,quantileTest,signTest,var1Test,wspoissonTest,wsrTest,
        medianTest, bfTest, pbf, qbf, bfControl, abcnonHtest, 
        wmwTest, methodRuleWMW, wmwControl, latentTransform, Vpo, 
        meldtTest, anovaOneWay, tukeyWelsch, meldCD, metaNorm, prevSeSp,
+       WprevSeSp,
        simulateSS
        )
 

@@ -19,6 +19,33 @@
 
 
 
+\section{Version 1.0.0 (2023-02-06)}{
+ \subsection{Changes}{
+  \itemize{
+   \item Added WprevSeSp function.
+  }
+ } 
+}
+
+\section{Version 0.9.8 (2021-09-15)}{
+ \subsection{Changes}{
+  \itemize{
+   \item Fixed bug in simulateSS function (see comment inside estNpower function within simulateSS).
+  }
+ } 
+}
+
+
+
+\section{Version 0.9.7 (2021-01-25)}{
+ \subsection{Changes}{
+  \itemize{
+   \item Added simulateSS function.
+  }
+ } 
+}
+
+
 
 \section{Version 0.9.6 (2020-07-03)}{
  \subsection{Changes}{
