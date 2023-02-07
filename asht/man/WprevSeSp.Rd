@@ -21,7 +21,7 @@ WprevSeSp(
 )
 }
 \arguments{
-\item{x}{integer vector of apparent positive tests for each group}
+\item{x}{integer  vector of apparent positive tests for each group}
 
 \item{n}{integer vector of number of tests for each group}
 
