@@ -6,9 +6,9 @@ Statistical Hypothesis Tests in Context: Reproducibility, Inference, and Science
 
 by Michael P. Fay and Erica H. Brittain
 
-(the book will come out this year from Cambridge University Press)
+(2023, Cambridge University Press)
 
-## Organization
+## Organization 
 
   * R scripts
 
