@@ -14,7 +14,7 @@ by Michael P. Fay and Erica H. Brittain
 a folder with files with R code that was used in examples and simulations in the book. 
 
 ### Errata 
-a folder with a ReadMe list of typos and corrections.
+a folder with a ReadMe.md file that lists typos and corrections.
 
 
 ### R package 
