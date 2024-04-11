@@ -10,12 +10,13 @@ by Michael P. Fay and Erica H. Brittain
 
 ## Organization 
 
-  * R scripts
+### R scripts
+a folder with files with R code that was used in examples and simulations in the book. 
 
-a folder with files with R code that was used in examples and simulations in the book.
+### Errata 
+a folder with a ReadMe list of typos and corrections.
 
-   
-Also there is an R package for the book at  https://CRAN.R-project.org/package=asht.
 
-I also created a development version of the R package at github.com/michaelpfay/asht.
+### R package 
+There is an R package for the book at  https://CRAN.R-project.org/package=asht. I also created a development version of the R package at github.com/michaelpfay/asht.
 
