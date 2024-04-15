@@ -28,4 +28,4 @@ k-1
 = k
 ```
 
-null hypotheses that have $k$ distributions equal."
+null hypotheses that have $k$ distributions equal." (Thanks to Pekka Pere of Aalto University for catching this error.)
