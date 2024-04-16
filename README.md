@@ -2,7 +2,7 @@
 
 This repository is related to the book:
 
-Statistical Hypothesis Tests in Context: Reproducibility, Inference, and Science
+Statistical Hypothesis Testing in Context: Reproducibility, Inference, and Science
 
 by Michael P. Fay and Erica H. Brittain
 
