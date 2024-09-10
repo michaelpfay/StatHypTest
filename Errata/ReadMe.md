@@ -45,3 +45,9 @@ null hypotheses that have $k-1$ distributions equal." (Thanks to Pekka Pere of A
  
  should be 
  "Let $\eta(k)$ be the maximum number of tests done...." (Thanks to Pekka Pere of Aalto University for catching this error.)
+
+   **p. 305, line 6:**
+
+There is a typo in Greenwood's formula, the set in the product operator should exclude $j$ where $d_j=0$. The correct equation is:
+
+$$\widehat{var} \left( \hat{S}(t) \right) =  \left( \hat{S}(t) \right)^2 \prod_{j:t^*_j \leq t \mbox{ and } d_j \neq 0 } \frac{ d_j}{r_j(r_j-d_j)}.$$
